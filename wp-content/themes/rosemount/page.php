@@ -15,7 +15,7 @@
    <div class="container">
 
      <div class="col-sm-6 contact-details">
-         <h2>Contact us</h2>
+         <h2>Contact Rosemount</h2>
          <p>We'd love to hear from you so why not save some time and send us your enquiry now. Please provide all details below and we'll ensure you have a response within 24 hours.</p>
          <?php if( get_field('email', 'option') ): ?><p><span>Email</span><?php the_field('email', 'option'); ?></p><?php endif; ?>
          <?php if( get_field('tel', 'option') ): ?><p><span>Phone</span><?php the_field('tel', 'option'); ?></p><?php endif; ?>
