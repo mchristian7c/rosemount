@@ -1,0 +1,39 @@
+body {
+  /*background-color: #e6e4e0;*/
+}
+input[type="submit"]#wp-submit {
+  /*background-color: #878789;*/
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 10px 30px 10px 30px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 auto;
+  -webkit-transition: all .3s ease-in;
+  -ms-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  transition: all .3s ease-in;  font-family: $open;
+	float: right;
+	width: auto;
+  height: auto;
+  text-shadow: none;
+  border: 0 solid transparent;
+  box-shadow: none;
+  -webkit-border-radius: 0;
+  border-radius: 0;
+
+}
+input[type="submit"]#wp-submit:hover {
+  text-decoration: none;
+  background-color: #6C6C6D;
+  -webkit-transition: all .3s ease-in;
+  -ms-transition: all .3s ease-in;
+  -moz-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+  color: #ffffff;
+}
+input[type="submit"]#wp-submit:focus {
+  text-decoration: none;
+  outline: none;
+}

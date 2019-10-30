@@ -1,0 +1,16 @@
+.mobile-buffer {
+  min-height: 100px;
+  @include transition(.2s);
+}
+body {
+  position: relative;
+}
+html, body {
+  height: 100%;
+}
+.containment {
+  min-height: 100%;
+}
+.wrapper {
+
+}

@@ -1,0 +1,28 @@
+/**********************************
+
+NAVIGATION
+
+**********************************/
+
+li.menu-item-has-children .dropdown-toggle .caret {
+  position: relative;
+  border-top: 4px solid black(1)
+}
+ul.dropdown-menu {
+  margin: 0;
+  left: auto;
+  margin-left: 20px;
+}
+.menu-item.menu-item-type-post_type.menu-item-object-page ul.dropdown-menu li {
+  float: left;
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+}
+.navbar-nav .open .dropdown-menu {
+  overflow: auto;
+  width: 100%;
+}
+.navbar-nav .open .dropdown-menu > li > a {
+  text-align: left;
+}

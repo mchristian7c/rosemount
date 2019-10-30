@@ -1,0 +1,894 @@
+.gmap {
+  padding-bottom: 30%;
+}
+
+
+  // Nota Bene
+
+  // 1. checkplot class to checkbox
+  // 2. textarea class to textarea
+  // 3. upload file field requires class .uplot
+
+// -----------------------------
+
+  // CONTACT PAGE STYLES
+
+// -----------------------------
+
+.contact-form-wrapper {
+  h2 {
+    font-size: 24px;
+    color: white(1);
+    text-align: center;
+    margin: 0 0 25px 0;
+  }
+  p {
+    margin: 0 0 40px 0;
+    font-size: 16px;
+    color: white(1);
+    text-align: center;
+    line-height: 26px;
+  }
+  .gform_footer {
+    span {
+      background-color: black(0);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 140px 80px;
+      position: absolute;
+      pointer-events: none;
+      right: 15px;
+      bottom: 0;
+      z-index: 1;
+      height: 80px;
+      width: 140px;
+    }
+  }
+}
+
+.contact-details {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  h2 {
+    font-family: $alfa;
+    color: lsb(1);
+    font-size: 40px;
+    margin: 0 0 20px 0;
+    font-weight: $sem;
+    letter-spacing: -1px;
+  }
+  p {
+    font-family: $beta;
+    font-size: 18px;
+    span {
+      width: 100px;
+      display: inline-block;
+      color: lsb(1);
+      font-weight: $sem;
+    }
+  }
+}
+
+
+
+
+// -----------------------------
+
+  // MIXINS
+
+// -----------------------------
+
+// $wrapper-bg:              ;
+
+// global input variables
+$input-font:              $beta;
+$input-font-color:        black(1);
+$onblur:                  black(.2);
+$input-font-size:         16px;
+$input-font-weight:       $lig;
+$input-bg:                black(.04);
+$input-radius:            0;
+
+// type = text, email, etc.
+$input-line-height:       50px;
+$input-height:            50px;
+$input-border:            0 solid rgba(0,0,0,0);
+$input-padding:           0 15px;
+$input-focus-border:      0 solid rgba(0,0,0,0);
+$input-focus-box-shadow:  0 0 0 4px black(.3);
+
+// textarea
+$textarea-padding:        15px 15px 15px 15px;
+$textarea--border:        0 solid rgba(0,0,0,0);
+$textarea-focus-border:   0 solid rgba(0,0,0,0);
+$textarea-focus-boxshad:  0 0 0 4px black(.3); // focus box shadow
+$textarea-line-height:    30px;
+$textarea-height:         230px;
+$textarea-weight:         $input-font-weight;
+
+// global transition speed
+$transition-speed:       .3s;
+
+// checkplot vars for checkboxes
+$checkplot-font:          $beta;
+$checkplot-size:          14px;
+$checkplot-weight:        $input-font-weight;
+$checkplot-color:         white(1);
+$checkplot-letspace:      0;
+
+// spinner
+$spinner-border:          white(1);
+$spinner-right:           black(1);
+$spinner-right-pos:       250px;
+$spinner-bottom-pos:      0;
+
+// submit button
+$submit-font:             $alfa;
+$submit-size:             inherit;
+$submit-color:            black(1);
+$submit-bg:               lsb(1);
+$submit-weight:           $med;
+$submit-padding:          0 45px;
+$submit-letspace:         0;
+$sumbit-line-height:      50px;
+$submit-border:           0 solid white(0);
+$submit-case:             uppercase;
+$submit-box-shadow:       0 0 0 0 white(0);
+$submit-box-shadover:     0 0 0 0 black(0);
+// --
+$submit-hover-color:      black(1);
+$submit-hover-bg:         lightblue;
+// --
+$submit-background-image: none;
+$submit-background-size:  140px 80px;
+$submit-background-pos:   center;
+$submit-background-rep:   no-repeat;
+
+// validation error message
+$error-font:              $beta;
+$error-size:              16px;
+$error-padding:           0;
+$error-color:             white(1);
+$error-margin:            15px 15px 30px 15px;
+//-- message
+$mess-color:              black(1);
+$mess-height:             $input-height;
+$mess-line-height:        $input-height;
+$mess-width:              $input-height;
+$mess-right:              15px;
+//-- ::before
+$mess-before-size:        25px;
+$mess-before-color:       white(1);
+$mess-before-weight:      $med;
+$mess-before-right:       0;
+$mess-before-bg-color:    lsb(1);
+//-- $textarea
+$mess-textarea-height:    $textarea-height;
+
+// -----------------------------
+
+  // END MIXINS
+
+// -----------------------------
+
+.contact-form-wrapper {
+
+  // -----------------------------
+
+    // WRAPPER STYLES
+
+  // -----------------------------
+
+  position: relative;
+  overflow: visible;
+
+  // edit from here
+  padding: 50px 0 50px 0;
+  // background-image: url('../images/contactback.png');
+  // background-position: center;
+  // background-size: cover;
+
+  // -----------------------------
+
+    // REMOVE LIST STYLING
+
+  // -----------------------------
+
+  ul {
+    margin: 0;
+  }
+  li {
+    margin: 0;
+    list-style-type: none;
+    position: relative;
+    &:first-of-type {
+      // padding-right: 0;
+      &.gfield_error {
+        .validation_message {
+          right: 15px;
+        }
+      }
+    }
+    &:nth-of-type(2) {
+      // padding: 0 20px;
+      &.gfield_error {
+        .validation_message {
+          right: 15px;
+        }
+      }
+    }
+    &:nth-of-type(3) {
+      // padding-left: 0;
+    }
+    &:before {
+      content: "";
+    }
+  }
+
+  // -----------------------------
+
+    // REMOVE GFIELD LABELS
+
+  // -----------------------------
+
+  label {
+    display: none;
+  }
+
+  // -----------------------------
+
+    // FILE UPLOAD FIELD
+
+  // -----------------------------
+
+
+  .uplot {
+    input[type="file"] {
+      cursor: pointer;
+    }
+    [id*="gform_preview_"] {
+      line-height: 50px;
+      div {
+        display: inline-block;
+        img {
+          display: none;
+        }
+        &:before {
+          font-family: FontAwesome;
+          font-size: 18px;
+          content: "\f00c";
+          color: #1e87bd;
+        }
+      }
+      strong {
+        color: white(1);
+        font-weight: $input-font-weight;
+        font-family: $input-font;
+        font-size: $input-font-size;
+        margin: 0 10px 0 5px;
+      }
+    }
+    .ginput_container_fileupload {
+      height: 50px;
+      .moxie-shim {
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 50px !important;
+      }
+      .validation_message {
+        ul {
+          li {
+            font-size: 0;
+            position: absolute;
+            width: 50%;
+            height: 50px;
+            background-color: white(1);
+            top: 0;
+            right: 15px;
+            &:before {
+              font-family: $input-font;
+              content: "illegal file" !important;
+              font-size: $input-font-size;
+              color: $input-font-color;
+              height: 50px;
+              width: calc(100% - 30px);
+              background-color: white;
+              position: absolute;
+              top: 0;
+              left: 0;
+              margin: 0 0 0 15px;
+              line-height: 50px;
+              padding: 0 0 0 65px;
+              pointer-events: none;
+              @include transition(.2s);
+              z-index: 9;
+            }
+            &:after {
+              font-family: FontAwesome;
+              font-size: 18px;
+              content: "\f093";
+              height: 50px;
+              width: 50px;
+              background-color: darkred;
+              position: absolute;
+              top: 0;
+              left: 0;
+              margin: 0 0 0 15px;
+              line-height: 50px;
+              padding: 0px 0 0 17px;
+              color: white(1);
+              pointer-events: none;
+              @include transition(.2s);
+              z-index: 10;
+
+            }
+
+          }
+        }
+      }
+    }
+    &:after {
+      font-family: FontAwesome;
+      font-size: 18px;
+      content: "\f093";
+      height: 50px;
+      width: 50px;
+      background-color: #839ca9;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0 0 0 15px;
+      line-height: 50px;
+      padding: 0px 0 0 17px;
+      color: white(1);
+      pointer-events: none;
+      @include transition(.2s);
+      z-index: 10;
+    }
+    &:before {
+      font-family: $input-font;
+      content: "Upload file" !important;
+      font-size: $input-font-size;
+      color: $input-font-color;
+      height: 50px;
+      width: calc(100% - 30px);
+      background-color: white;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0 0 0 15px;
+      line-height: 50px;
+      padding: 0 0 0 65px;
+      pointer-events: none;
+      @include transition(.2s);
+      z-index: 9;
+    }
+    &:hover:after {
+      background-color: #1e87bd;
+    }
+  }
+
+  // -----------------------------
+
+    // VALIDATION
+
+  // -----------------------------
+
+  .gform_confirmation_message {
+    font-family: $error-font;
+    font-size: $error-size;
+    padding: $error-padding;
+    color: lsb(1);
+    margin: $error-margin;
+    text-align: center;
+    clear: left;
+    margin-top: -10px;
+    font-weight: $sem;
+  }
+  .validation_error {
+    font-family: $error-font;
+    font-size: $error-size;
+    padding: $error-padding;
+    color: lsb(1);
+    margin: $error-margin;
+    text-align: center;
+    clear: left;
+    margin-top: -20px;
+    font-weight: $reg;
+  }
+  .gfield_error {
+    input[type="text"] {
+      position: relative;
+    }
+    .validation_message {
+      color: $mess-color;
+      height: $mess-height;
+      line-height: $mess-line-height;
+      width: $mess-width;
+      right: $mess-right;
+      // don't usually edit
+      text-align: center;
+      position: absolute;
+      font-size: 0;
+      top: 0;
+      z-index: 9;
+    }
+    .validation_message:before {
+      content: '\f12a';
+      font-family: FontAwesome;
+      font-size: $mess-before-size;
+      color: $mess-before-color;
+      font-weight: $mess-before-weight;
+      position: absolute;
+      right: $mess-before-right;
+      background-color: $mess-before-bg-color;
+
+      //border-radius
+      -webkit-border-radius: $input-radius;
+      border-radius: $input-radius;
+      background-clip: padding-box;
+
+      display: block;
+      width: $mess-height;
+      height: $mess-height;
+    }
+    &.textarea {
+      .validation_message:before {
+        //border-radius
+        -webkit-border-radius: $input-radius;
+        border-radius: $input-radius;
+        background-clip: padding-box;
+
+        height: $mess-textarea-height;
+        line-height: $mess-height;
+      }
+    }
+    &.checkplot {
+      .validation_message:before {
+        display: none;
+      }
+    }
+  }
+
+
+  // -----------------------------
+
+    // FORM FIELDS
+
+  // -----------------------------
+
+
+  input[type='text'], input[type='email'], input[type="file"] {
+
+    // vars
+    font-family:      $input-font;
+    font-weight:      $input-font-weight;
+    font-size:        $input-font-size;
+    color:            $input-font-color;
+    background-color: $input-bg;
+    padding:          $input-padding;
+    line-height:      $input-line-height;
+    height:           $input-height;
+    border:           $input-border;
+
+    // transition speed
+    -webkit-transition: all $transition-speed ease-in;
+    -ms-transition: all     $transition-speed ease-in;
+    -moz-transition: all    $transition-speed ease-in;
+    transition: all         $transition-speed ease-in;
+
+    // don't normally edit
+    width: 100%;
+    margin-bottom: 20px;
+
+    // border-radius
+    -webkit-border-radius: $input-radius;
+    border-radius: $input-radius;
+    background-clip: padding-box;
+
+    &:focus {
+      border: $input-focus-border;
+      box-shadow: inset $input-focus-box-shadow;
+      // transition speed
+      -webkit-transition: all $transition-speed ease-in;
+      -ms-transition: all     $transition-speed ease-in;
+      -moz-transition: all    $transition-speed ease-in;
+      transition: all         $transition-speed ease-in;
+    }
+
+  }
+
+
+  textarea {
+    // vars
+    font-family: $input-font;
+    font-weight: $textarea-weight;
+    font-size: $input-font-size;
+    color: $input-font-color;
+    background-color: $input-bg;
+
+    padding: $textarea-padding;
+    line-height: $textarea-line-height;
+    border: $textarea--border;
+    height: $textarea-height;
+
+    // don't normally edit
+    width: 100%;
+    margin-bottom: 0;
+    resize: none;
+
+
+    // transition speed
+    -webkit-transition: all $transition-speed ease-in;
+    -ms-transition: all     $transition-speed ease-in;
+    -moz-transition: all    $transition-speed ease-in;
+    transition: all         $transition-speed ease-in;
+
+    //border-radius
+    -webkit-border-radius: $input-radius;
+    border-radius: $input-radius;
+    background-clip: padding-box;
+
+    &:focus {
+      border: $textarea-focus-border;
+      box-shadow: inset $textarea-focus-boxshad;
+
+      font-family: $input-font;
+      padding: $textarea-padding;
+
+      // transition speed
+      -webkit-transition: all $transition-speed ease-in;
+      -ms-transition: all     $transition-speed ease-in;
+      -moz-transition: all    $transition-speed ease-in;
+      transition: all         $transition-speed ease-in;
+    }
+  }
+
+  input[type='submit'] {
+    font-family:         $submit-font;
+    font-weight:         $submit-weight;
+    padding:             $submit-padding;
+    color:               $submit-color;
+    font-size:           $submit-size;
+    letter-spacing:      $submit-letspace;
+    background-color:    $submit-bg;
+    line-height:         $sumbit-line-height;
+    border:              $submit-border;
+    text-transform:      $submit-case;
+
+    background-image:    $submit-background-image;
+    background-position: $submit-background-pos;
+    background-repeat:   $submit-background-rep;
+    background-size:     $submit-background-size;
+
+    // border-radius
+    -webkit-border-radius: $input-radius;
+    border-radius:         $input-radius;
+    background-clip: padding-box;
+
+    // transition speed
+    -webkit-transition: all $transition-speed ease-in;
+    -ms-transition: all     $transition-speed ease-in;
+    -moz-transition: all    $transition-speed ease-in;
+    transition: all         $transition-speed ease-in;
+
+    display: block;
+    float: right;
+    margin: 20px 15px 0 0;
+    position: relative;
+    z-index: 2;
+    width: auto;
+    height: 50px;
+
+
+    @include transition(.3s);
+
+    // box-shadow e.g. 12.5em 0 0 0 white(1)
+      // box-shadow: inset   $submit-box-shadow;
+      // -webkit-box-shadow: $submit-box-shadow;
+      // -moz-box-shadow:    $submit-box-shadow;
+      // -o-box-shadow:      $submit-box-shadow;
+      // box-shadow:         $submit-box-shadow;
+
+    &:visited {
+      color: $submit-color;
+    }
+    &:hover, &:focus {
+      color:            $submit-hover-color;
+      background-color: $submit-hover-bg;
+      @include transition(.3s);
+
+      // box-shadow rollover e.g. 12.5em 0 0 0 white(1)
+        // box-shadow: inset         $submit-box-shadover;
+        // -webkit-box-shadow: inset $submit-box-shadover;
+        // -moz-box-shadow: inset    $submit-box-shadover;
+        // -o-box-shadow: inset      $submit-box-shadover;
+        // box-shadow: inset         $submit-box-shadover;
+
+      // transition speed
+      -webkit-transition: all $transition-speed ease-in;
+      -ms-transition: all     $transition-speed ease-in;
+      -moz-transition: all    $transition-speed ease-in;
+      transition: all         $transition-speed ease-in;
+
+      text-decoration: none;
+    }
+  }
+
+
+  // -----------------------------
+
+    // ONBLUR
+
+  // -----------------------------
+
+  ::-webkit-input-placeholder { /* Chrome */
+    color: $input-font-color !important;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: $input-font-color !important;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: $input-font-color !important;
+    opacity: 1 !important;
+  }
+  :-moz-placeholder { /* Firefox 4 - 18 */
+    color: $input-font-color !important;
+    opacity: 1 !important;
+  }
+  :-moz-placeholder { /* Firefox 4 - 18 */
+    color: $input-font-color !important;
+    opacity: 1 !important;
+  }
+
+  // input focus
+
+  input:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder { /* Chrome */
+    color: $onblur !important;
+  }
+  input:focus:-ms-input-placeholder,
+  textarea:focus:-ms-input-placeholder { /* IE 10+ */
+    color: $onblur !important;
+  }
+  input:focus::-moz-placeholder,
+  textarea:focus::-moz-placeholder { /* Firefox 19+ */
+    color: $onblur !important;
+    opacity: 1 !important;
+  }
+  input:focus:-moz-placeholder,
+  textarea:focus:-moz-placeholder { /* Firefox 4 - 18 */
+    color: $onblur !important;
+    opacity: 1 !important;
+  }
+  input:focus:-moz-placeholder,
+  textarea:focus:-moz-placeholder { /* Firefox 4 - 18 */
+    color: $onblur !important;
+    opacity: 1 !important;
+  }
+
+
+} // CONTACT WRAPPER
+
+
+// -----------------------------
+
+  // BETTER SPINNER
+
+// -----------------------------
+
+
+.gform_ajax_spinner {
+  // margin: -70px 200px 0 0;				/* give it some space from the Submit button */
+  border: 4px solid  $spinner-border;	/* match with border-left */
+  border-left: 4px solid  $spinner-right;
+  right:             $spinner-right-pos;
+  bottom:            $spinner-bottom-pos;
+
+  animation: spinner 1.1s infinite linear;
+  border-radius: 50%;
+  width: 30px;					/* match with height for a circle */
+  height: 30px;
+  line-height: 150px;
+  position: absolute;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+// -----------------------------
+
+  // CHECKPLOT - CHECKBOX STYLES
+
+// -----------------------------
+
+
+.gfield {
+  li {
+    input {
+      position: absolute;
+      @include opacity(0);
+    }
+  }
+}
+
+.checkplot {
+float: left;
+margin: 0;
+  label {
+    font-weight:    $checkplot-weight;
+    font-family:    $checkplot-font;
+    font-size:      $checkplot-size;
+    color:          $checkplot-color;
+    letter-spacing: $checkplot-letspace;
+
+    display: inline-block;
+    margin: 0 20px 0 15px;
+
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+    &.gfield_label {
+      display: none;
+    }
+  }
+  &.full-width {
+    position: absolute;
+    left: 0;
+    bottom: -50px;
+  }
+}
+
+.gfield input[type="checkbox"] + label {
+  background-image: url(../images/chekov.svg);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: 40px;
+  line-height: 30px;
+}
+
+// .gfield input[type="checkbox"]:hover + label {
+//   background-image: url(../images/chekor.svg);
+//   background-size: 30px 30px;
+//   background-repeat: no-repeat;
+//   background-position: left top;
+//   padding-left: 40px;
+//   line-height: 30px;
+// }
+
+.gfield input[type="checkbox"]:checked + label {
+  background-image: url(../images/chekon.svg);
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-left: 40px;
+  line-height: 30px;
+}
+
+// -----------------------------
+
+  // TWO COLUMN LAYOUT
+
+// -----------------------------
+
+.gform_wrapper.two-column_wrapper ul.gform_fields {
+  display: none;
+}
+.gform_wrapper.two-column_wrapper ul.gform_fields.gform_column {
+  display: block;
+  float: left;
+  width: 50%;
+  &:nth-of-type(3) {
+    padding: 0 15px 0 15px;
+  }
+  &:nth-of-type(2) {
+    padding: 0 15px 0 0;
+  }
+}
+.gform_wrapper.two-column_wrapper ul.gform_fields.gform_column.gform_full {
+  clear: left;
+  float: none;
+  width: 100%;
+}
+.gform_wrapper.two-column_wrapper ul.gform_column li.gsection:first-child {
+  display: none;
+}
+
+@media only screen and (min-width: 1031px) {
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 1024px) {
+
+  // .contact input[type="submit"] {
+  //   margin: 53px 0 0 0;
+  //   float: left;
+  // }
+  //
+  // .gform_ajax_spinner {
+  //   left: 230px;
+  // }
+
+} // end of media query
+
+@media only screen and (max-width: 768px) {
+
+  .contact-form-wrapper {
+    padding: 80px 0 150px 0;
+    li {
+      &:first-of-type {
+        padding-right: 15px;
+        &.gfield_error {
+          .validation_message {
+            right: 15px;
+          }
+        }
+      }
+      &:nth-of-type(2) {
+        padding: 0 15px;
+        &.gfield_error {
+          .validation_message {
+            right: 15px;
+          }
+        }
+      }
+      &:nth-of-type(3) {
+        padding-left: 15px;
+      }
+    }
+
+  }
+
+
+
+} // end of media query
+@media only screen and (max-width: 480px) {
+
+.contact-form-wrapper {
+  textarea {
+    margin-top: 20px;
+  }
+  padding: 80px 0 150px 0;
+  li {
+    &:first-of-type {
+      padding-right: 15px;
+      &.gfield_error {
+        .validation_message {
+          right: 15px;
+        }
+      }
+    }
+    &:nth-of-type(2) {
+      padding: 0 15px;
+      &.gfield_error {
+        .validation_message {
+          right: 15px;
+        }
+      }
+    }
+    &:nth-of-type(3) {
+      padding-left: 15px;
+    }
+  }
+
+}
+.checkplot.full-width {
+  bottom: -110px;
+}
+
+} // end of media query

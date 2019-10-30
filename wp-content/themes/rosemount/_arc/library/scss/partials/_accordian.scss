@@ -1,0 +1,292 @@
+.accordion-wrapper {
+  padding: 100px 0;
+  background-color: black(0);
+  text-align: left;
+  .text-area {
+    margin-bottom: 55px;
+    padding: 0 30px 0 45px !important;
+    p {
+      font-size: 16px;
+      line-height: 27px;
+    }
+  }
+  .col-sm-6 {
+    padding: 0 30px;
+  }
+  .panel-group .panel + .panel {
+    margin-top: 0;
+  }
+  .panel {
+    border-top:    1px solid black(.2);
+    border-right:  0   solid black(0);
+    border-bottom: 0 solid black(.2);
+    border-left:   0   solid black(0);
+    box-shadow: none;
+  }
+  .panel-body {
+    padding: 20px 0;
+    background-color: black(0);
+    p {
+      font-size: 16px;
+      margin: 0 0 17px 0;
+      letter-spacing: .3px;
+      line-height: 27px;
+    }
+    ul {
+      margin: 0 0 17px 0;
+      li {
+        font-family: $alfa;
+        font-size: 16px;
+        color: black(1);
+        letter-spacing: 0.3px;
+        line-height: 27px;
+        margin: 0 0 10px 18px;
+        padding: 0 0 0 10px;
+        font-weight: $sem;
+        list-style-type: disc;
+        list-style-position: outside;
+      }
+    }
+    a {
+      &.close {
+        &:link {
+          font-family: $alfa;
+          font-size: 14px;
+          text-decoration: underline;
+          float: left;
+          color: black(1);
+          text-transform: uppercase;
+          font-weight: $alfa;
+          @include opacity(1);
+          @include transition(.2s);
+        }
+        &:visited {
+          color: black(1);
+        }
+        &:hover {
+          color: teal(1);
+          @include transition(.2s);
+        }
+      }
+    }
+  }
+  .concertina-column {
+    .panel:last-child {
+      border-bottom: 1px solid black(.2);
+    }
+  }
+  .panel-heading {
+    background-color: white(1);
+    padding: 0;
+    h4.panel-title {
+      letter-spacing: 3px;
+      font-size: 16px;
+      font-weight: $sem;
+      line-height: 25px;
+      padding: 0;
+      text-transform: uppercase;
+      &.mobile {
+        display: none;
+      }
+      a {
+        display: block;
+        position: relative;
+        color: black(1);
+        padding: 30px 40px 30px 0;
+        &:link {
+          text-decoration: none;
+        }
+        &:visited {
+          text-decoration: none;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+        &:focus {
+          outline: 0 solid black(0);
+        }
+        &:active {
+          text-decoration: none;
+        }
+        &.keys {
+          p {
+            position: absolute;
+            right: 3px;
+            height: 34px;
+            width: 34px;
+            top: 50%;
+            margin-top: -17px;
+            background-color: black(.03);
+            @include border-radius(50%);
+            span {
+              display: block;
+              background-color: black(.4);
+              height: 2px;
+              width: 15px;
+              @include rotate(0);
+              position: relative;
+              top: 16px;
+              left: 9px;
+              &.upright {
+                margin: -2px 0 0 0;
+                @include rotate(90deg);
+                @include transition(.5s);
+              }
+            }
+          }
+          &.plusminus {
+            p {
+              span {
+                &.upright {
+                  @include rotate(0);
+                  margin: -2px 0 0 0;
+                  @include transition(.5s);
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+h2.accordion-title {
+  color: teal(1);
+  font-size: 18px;
+  font-weight: $sem;
+  letter-spacing: 3.75px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 0 0 55px 0;
+}
+
+
+.concertina-disclaimer {
+  font-family: $alfa;
+  text-align: center;
+  margin-top: 50px;
+  font-size: 12px;
+  color: black(.4);
+}
+
+
+
+
+
+
+@media only screen and (min-width: 1031px) {
+
+
+} // end of media query
+
+@media only screen and (max-width: 1030px) {
+  .accordion-wrapper .panel-heading h4.panel-title {
+    display: none;
+    &.mobile {
+      display: block;
+    }
+  }
+
+} // end of media query
+
+@media only screen and (max-width: 768px) {
+
+
+// } // end of media query
+//
+// @media only screen and (max-width: 480px) {
+
+  h1.accordion-title {
+    margin: 0 0 50px -15px;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .accordion-wrapper {
+    padding: 60px 0;
+    .col-sm-6 {
+        padding: 0;
+    }
+    .text-area {
+      padding: 0 15px;
+      &:nth-of-type(1) {
+        margin-bottom: 0;
+      }
+    }
+  }
+  .accordion-wrapper .panel-heading h4.panel-title a {
+      padding: 30px 30px 30px 0;
+  }
+  .accordion-wrapper .panel-heading h4.panel-title {
+    display: none;
+    &.mobile {
+      display: block;
+    }
+  }
+
+  .concertina-column {
+    &:nth-of-type(odd) {
+      .col-sm-6 {
+        width: 48% !important;
+        margin-right: 2%;
+      }
+    }
+    &:nth-of-type(even) {
+      .col-sm-6 {
+        margin-left: 2%;
+        width: 48% !important;
+      }
+    }
+  }
+
+  } // end of media query
+
+  @media only screen and (max-width: 767px) {
+    .accordion-wrapper .panel-heading h4.panel-title {
+      display: none;
+      &.mobile {
+        display: block;
+      }
+    }
+
+    h2.accordion-title {
+      margin: 0 0 20px -15px;
+      font-size: 16px;
+      text-align: left;
+    }
+    .accordion-wrapper {
+      .col-sm-6 {
+          padding: 0;
+      }
+      .text-area {
+        padding: 0 15px;
+        &:nth-of-type(1) {
+          margin-bottom: 0;
+        }
+      }
+      .concertina-column:nth-of-type(2) {
+        .panel:nth-of-type(1) {
+          border-top: 0 solid white(0);
+        }
+      }
+    }
+
+    .concertina-column {
+      &:nth-of-type(odd) {
+        .col-sm-6 {
+          width: 100% !important;
+          margin-right: 0;
+        }
+      }
+      &:nth-of-type(even) {
+        .col-sm-6 {
+          margin-left: 0;
+          width: 100% !important;
+        }
+      }
+    }
+    .onlyone {
+      padding: 0;
+    }
+} // end of media query

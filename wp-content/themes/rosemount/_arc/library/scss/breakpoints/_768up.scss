@@ -1,0 +1,26 @@
+.mobile-buffer {
+	height: 100px;
+}
+.header {
+  position: fixed;
+  width: 100%;
+  height: 80px;
+  @include transition(.2s);
+  .navbar-logo {
+    img {
+      width: 48px;
+      height: auto;
+      margin: 16px 0;
+      @include transition(.2s);
+    }
+  }
+  .navbar-text {
+    @include opacity(0);
+    @include transition(.15s);
+    margin-top: -100px;
+  }
+  ul.nav {
+    margin: -5px 0 0 0;
+    @include transition(.2s);
+  }
+}

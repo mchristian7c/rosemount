@@ -1,0 +1,8 @@
+#poststuff .acf-postbox h2.hndle {
+    font-size: 18px;
+    background: #878789;
+    color: white;
+}
+.acf-flexible-content .layout .acf-fc-layout-handle {
+  background-color: lightgrey;
+}
