@@ -1,0 +1,28 @@
+.fourohfour {
+  background-image: url('../images/rosemount_watermark.png');
+  background-size: auto 100%;
+  background-position: top right;
+  background-repeat: no-repeat;
+  .container {
+    .row {
+      text-align: center;
+      h1 {
+        color: blue(1);
+        font-weight: $med;
+        font-size: 40px;
+        margin: 0 0 20px 0;
+      }
+      h2 {
+        color: grey(1);
+        margin: 0 0 20px 0;
+        font-size: 30px;
+      }
+      p {
+        font-size: 18px;
+        color: grey(1);
+        margin: 0;
+        line-height: 32px;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-<?
+<?php
 // thumbnails to wordpress custom post type admin
 if (function_exists('add_theme_support'))
 {

@@ -1,27 +1,32 @@
-<div class="container_fluid">
+<div class="archive-head singlepost container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 align-self-end">
+				<h1>News</h1>
+			</div>
+			<div class="col-sm-6 align-self-end">
+				<div class="linkwrap left">
+					<a href="<?php bloginfo('url'); ?>/news"><i class="fa fa-long-arrow-left" aria-hidden="true"></i>back to news</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container_fluid text-row singlepost">
   <div class="container">
-              <article id="post-<?php the_ID(); ?>" <?php post_class('single'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
-                <section class="col-sm-12">
+    <div class="row">
+
+              <article id="post-<?php the_ID(); ?>" <?php post_class('single col-sm-12 offset-sm-0 col-md-12 offset-md-0 col-lg-10 offset-lg-1'); ?> role="article" itemscope itemprop="blogPost" itemtype="http://schema.org/BlogPosting">
+                <section>
                   <?php $athing = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'single' );?>
-
-                      <div class="embed-container" style="background-image:url(<?php echo $athing['0'];?>);"></div>
-
+                  <div class="embed-container" style="background-image:url(<?php echo $athing['0'];?>);"></div>
                 </section> <?php // end article section ?>
 
-                <header class="col-sm-5">
-
-                  <h1 class="entry-title single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
-
-
-
-                    <h4><?php echo get_the_time('l F jS, Y'); ?></h4>
-
-
-
-
+                <header>
+                  <h1 class="single-title" itemprop="headline" rel="bookmark"><?php the_title(); ?></h1>
                 </header> <?php // end article header ?>
 
-                <section class="col-sm-7" itemprop="articleBody">
+                <div>
                   <?php
                     // the content (pretty self explanatory huh)
                     the_content();
@@ -45,23 +50,23 @@
                       'link_after'  => '</span>',
                     ) );
                   ?>
-                </section> <?php // end article section ?>
+                </div>
 
               </div>
             </div>
+          </div>
+
                 <footer class="article-footer">
-
-
-                            <div id="related-posts" class="container_fluid related">
-                              <div class="container">
-                                  <section class="related-posts">
-                                    <h3 class="row-title">Related Posts</h3>
+                            <div class="container_fluid">
+                              <div class="container blog-archive-wrap">
+                                <h3 class="row-title">More news from Rosemount</h3>
+                                  <section class="row">
                                     <?php
 
                                     $related = get_posts( array(
                                       'post_type' => 'post',
                                       // 'category__in' => wp_get_post_categories($post->ID),
-                                      'numberposts' => 3,
+                                      'numberposts' => 2,
                                       'post__not_in' => array($post->ID)
                                       )
                                     );
@@ -70,7 +75,8 @@
                                     <?php //if (has_post_format('video')) { ?>
                                       <!--Content Here-->
 
-                                      <article class="blog-archive col-sm-4" onclick="location.href='<?php the_permalink(); ?>';">
+                                      <article class="blog-post col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                      									<a class="permalink" href="<?php the_permalink(); ?>"></a>
                                         <?php $thumb = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' );?>
 
                                         <div class="clip-bg">
@@ -78,24 +84,17 @@
                         									</header>
                                         </div>
 
-                      									<section>
+                      									<section class="match">
                                           <h2><?php the_title(); ?></h3>
-
+                      										<div class="linkwrap">
+                      											<a href="#">read more<i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                      										</div>
                       									</section>
-
-                      									<footer>
-
-                      									</footer>
 
                       								</article>
 
                                     <?php }
                                     wp_reset_postdata(); ?>
-                    									<div class="row-button-wrap">
-                    										<!-- <a href="<?php $url = home_url( '/' ); echo esc_url( $url ); ?>type/video" class="row-button">view all posts</a> -->
-                                        <a href="<?php $url = home_url( '/' ); echo esc_url( $url ); ?>blog" class="row-button">view all posts</a>
-                    									</div>
-
 
                                   </section>
                                 </div>

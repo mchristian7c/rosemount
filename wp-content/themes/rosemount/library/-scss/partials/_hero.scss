@@ -1,0 +1,87 @@
+.page-hero {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top;
+  .row {
+    height: 43.43vw;
+  }
+  .blackout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 57.5%;
+    height: 43.43vw;
+    background: -moz-linear-gradient(left,  rgba(0,0,0,.75) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,.75) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  rgba(0,0,0,.75) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#454545', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+    background-blend-mode: multiply
+  }
+  h1 {
+    font-size: 54px;
+    color: white(1);
+  }
+  &.legals {
+    background-color: white(1);
+    border-bottom: 3px solid grey(.086);
+    background-image: url("../images/rosemount_watermark_legals.png");
+    background-size: auto 100%;
+    background-position: top right;
+    background-repeat: no-repeat;
+    .row {
+      height: 300px;
+      h1 {
+        text-align: center;
+        color: blue(1);
+
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 1024px) {
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 992px) {
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 768px) {
+
+  .page-hero {
+    .row {
+      height: 60vw;
+      min-height: 350px;
+    }
+    .blackout {
+      height: 60vw;
+      min-height: 350px;
+      width: 100vw;
+    }
+    h1 {
+      text-align: center;
+      font-size: 48px;
+    }
+  }
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 480px) {
+
+
+
+} // end of media query

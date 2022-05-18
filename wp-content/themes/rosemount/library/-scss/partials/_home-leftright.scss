@@ -1,0 +1,134 @@
+.left-right-row-wrap {
+  .row-wrap {
+    &:nth-of-type(even) {
+      margin-top: 10px;
+      .left-right {
+        flex-direction: row-reverse;
+      }
+    }
+  }
+  .left-right {
+    background-color: grey(1);
+    position: relative;
+    .picture {
+      padding-bottom: 40%;
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: cover;
+    }
+    .greyback {
+      padding: 0 6.24%;
+      h2 {
+        font-size: 28px;
+        color: white(1);
+        line-height: 36px;
+        span {
+          color: blue(1);
+        }
+      }
+      p {
+        font-size: 18px;
+        color: white(1);
+        line-height: 30px;
+        margin: 15px 0 0 0;
+      }
+    }
+    .linkwrap {
+      position: absolute;
+      left: 6.24%;
+      bottom: 100px;
+    }
+  }
+}
+
+@media only screen and (min-width: 801px) {
+
+  .left-right-row-wrap {
+    .row-wrap {
+      &:nth-of-type(even) {
+        .left-right {
+          .linkwrap {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+} // end of media query
+
+@media only screen and (max-width: 1300px) {
+
+.left-right-row-wrap {
+  .left-right {
+    .linkwrap {
+      bottom: 50px;
+    }
+  }
+}
+
+} // end of media query
+
+@media only screen and (max-width: 1024px) {
+
+  .left-right-row-wrap {
+    .left-right {
+      .linkwrap {
+        bottom: 50px;
+      }
+      .greyback {
+        padding: 50px 6.24% 75px 6.24%;
+      }
+      .picture {
+        padding-bottom: calc(40% + 100px);
+      }
+    }
+  }
+
+
+} // end of media query
+
+@media only screen and (max-width: 800px) {
+
+  .left-right-row-wrap {
+    .row-wrap {
+      &:nth-of-type(odd) {
+        .left-right {
+          .linkwrap {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .left-right-row-wrap {
+    .row-wrap {
+      .left-right {
+        .picture {
+          padding-bottom: 55%;
+        }
+      }
+    }
+  }
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 767px) {
+
+.left-right-row-wrap {
+  .left-right {
+    .linkwrap {
+      bottom: 50px;
+      left: 50px;
+    }
+    .greyback {
+      padding: 50px 50px 100px 50px;
+    }
+  }
+}
+
+
+}

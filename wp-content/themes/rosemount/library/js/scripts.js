@@ -87,22 +87,6 @@ var timeToWaitForLast = 100;
  *
 */
 
-/*
- * We're going to swap out the gravatars.
- * In the functions.php file, you can see we're not loading the gravatar
- * images on mobile to save bandwidth. Once we hit an acceptable viewport
- * then we can swap out those images since they are located in a data attribute.
-*/
-function loadGravatars() {
-  // set the viewport using the function above
-  viewport = updateViewportDimensions();
-  // if the viewport is tablet or larger, we load in the gravatars
-  if (viewport.width >= 768) {
-  jQuery('.comment img[data-gravatar]').each(function(){
-    jQuery(this).attr('src',jQuery(this).attr('data-gravatar'));
-  });
-	}
-} // end function
 
 
 /*
@@ -110,24 +94,14 @@ function loadGravatars() {
 */
 jQuery(document).ready(function($) {
 
-	$('.tab-content.sub-page-content div:first').addClass('active');
-	$('.tab-content.sub-page-content div:first').addClass('in');
-	$('.tab-content.tab-nav-content div:first').addClass('active in');
-
-	var divs = $(".concertina-column");
-	for(var i = 0; i < divs.length; i+=3) {
-		divs.slice(i, i+3).wrapAll("<div class='panel-group content-container' id='accordion'></div>");
+	var userAgent = navigator.userAgent.toLowerCase();
+		if((navigator.userAgent.indexOf("IE") != -1 ) || (!!document.documentMode == true )){
+		$('body').addClass('msie');
 	}
-	//
-	//
-	//
-	// $(".carousel").swipe({
-	// 	swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
-	// 		if (direction == 'left') $(this).carousel('next');
-	// 		if (direction == 'right') $(this).carousel('prev');
-	// 	},
-	// 	allowPageScroll:"vertical"
-	// });
+	var userAgent = navigator.userAgent.toLowerCase();
+		if((window.navigator.userAgent.indexOf("Edge/") != -1 ) || (!!document.documentMode == true )){
+		$('body').addClass('msie');
+	}
 
 
 	$(function() {
@@ -153,9 +127,19 @@ jQuery(document).ready(function($) {
 		allowPageScroll:"vertical"
 	});
 
+	$(window).scroll(function () {
+		$(".hero").css("background-position","right " + ($(this).scrollTop() / 2) + "px");
+		$(".page-hero.legals").css("background-position","right " + ($(this).scrollTop() / 2) + "px");
+	});
 
+	$('#carousel-home .carousel-item:first').addClass('active');
+	$('.carousel-wrapper .button:first').addClass('active');
 
+	$('#carousel-home-mob .carousel-item:first').addClass('active');
+	$('.carousel-wrapper.mob .carousel-indicators.desk .button:first').addClass('active');
+	$('.carousel-wrapper.mob .carousel-indicators.mobile .button:first').addClass('active');
 
+	$( "div[id^='carousel-']").find('.carousel-item:first' ).addClass('active');
 
 
 
@@ -188,15 +172,47 @@ jQuery(document).ready(function($) {
 		$(this).toggleClass("crossed");
 		// setTimeout(function(){
 			$(".the-blob").toggleClass("evergrowing");
+			$("body").toggleClass("fix-me");
+
    // },250)
 		// setTimeout(function(){
 			$(".the-blob-nav").toggleClass("showoff");
 			$(".nav li").toggleClass("fadeInDown");
+			$('.blob-content.container').removeClass("zoom");
+			$('.blob-content.container').addClass("opaque");
+			$('.blob-hidden').addClass("opaque");
+			$('.blob-hidden').removeClass("mooz");
+
    // },300)
-	 		setTimeout(function(){
-				$('.navbar-logo img').toggleClass("light");
-			},200);
 	});
+
+
+	$(".contact-blob .linkwrap a").click(function(e) {
+		$('.blob-content.container').addClass("zoom");
+		$('.blob-hidden').addClass("mooz");
+		e.preventDefault();
+	});
+
+	$(".contact-form-wrapper .linkwrap.left a").click(function(e) {
+		$('.blob-content.container').removeClass("zoom");
+		$('.blob-hidden').removeClass("mooz");
+		e.preventDefault();
+	});
+
+
+	$(".linkwrap.deets a").click(function(e) {
+		e.preventDefault();
+		$(".navburger").addClass("crossed");
+		$(".the-blob").addClass("evergrowing");
+		$("body").addClass("fix-me");
+		$(".the-blob-nav").addClass("showoff");
+		// setTimeout(function(){
+			$('.blob-content.container').addClass("zoom");
+			$('.blob-hidden').addClass("mooz");
+			$('.blob-hidden').addClass("opaque");
+		// },250)
+	});
+
 
 	$(".nav li").toggleClass("animated");
 
@@ -223,52 +239,16 @@ jQuery(document).ready(function($) {
 		}
 	});
 
-	// ----------------------------------
-
-	// smooth scroll
 
 	// ----------------------------------
 
-	// $(function() {
-	// 	$('a[href*="#"]:not([href="#"])').click(function() {
-	// 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-	// 			var target = $(this.hash);
-	// 			target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-	// 			if (target.length) {
-	// 				$('html, body').animate({
-	// 					scrollTop: target.offset().top
-	// 				}, 1000);
-	// 				return false;
-	// 			}
-	// 		}
-	// 	});
-	// });
+	// BOOTSTRAP CAROUSEL - NOT REQUIRED?
 
 	// ----------------------------------
 
-	// KEN BURNS
+	// $('#kb .item:first').addClass('active');
+	// $('#kb .button:first').addClass('active');
 
-	// ----------------------------------
-
-
-	// $('#kb').carousel({
-	// 	interval: 1000
-	// });
-	$('#kb .item:first').addClass('active');
-	$('#kb .button:first').addClass('active');
-
-	// ----------------------------------
-
-	// FLEX CAROUSEL
-
-	// ----------------------------------
-
-
-	// $('#kb').carousel({
-	// 	interval: 1000
-	// });
-	$('#flex .item:first').addClass('active');
-	$('#flex .button:first').addClass('active');
 
 	$(window).resize(function(){
 
@@ -294,33 +274,6 @@ jQuery(document).ready(function($) {
 		divs.slice(i, i+3).wrapAll("<div class='blog-archive-row'></div>");
 	}
 
-
-	// ----------------------------------
-
-	// DELETE ALL BELOW THIS LINE
-
-	// ----------------------------------
-
-
-	$('.nav-tabs.sub-page-content li:first').addClass('active');
-	$('.tab-content.sub-page-content div:first').addClass('active');
-	$('.tab-content.sub-page-content div:first').addClass('in');
-
-
-
-
-	// wrap divs in a div - freaking love this!
-	var divs = $(".video-post-wrap");
-	for(var i = 0; i < divs.length; i+=3) {
-		divs.slice(i, i+3).wrapAll("<div class='row'></div>");
-	}
-	// wrap divs in a div - freaking love this!
-	var divs = $(".media-post-wrap");
-	for(var i = 0; i < divs.length; i+=3) {
-		divs.slice(i, i+3).wrapAll("<div class='row media_row'></div>");
-	}
-
-
 	$("[data-toggle='toggle']").click(function() {
 	    var selector = $(this).data("target");
 	    $(selector).toggleClass('in');
@@ -329,7 +282,6 @@ jQuery(document).ready(function($) {
 	$(".keys").click(function() {  //use a class, since your ID gets mangled
 		$(this).toggleClass("plusminus");      //add the class to the clicked element
 	});
-
 
 	$(function(){
 		$(".contact.keys").click(function(){
@@ -343,181 +295,29 @@ jQuery(document).ready(function($) {
 
 
 
-
-$(function(){
-	$(".showtheform").click(function(){
-	if($(".theform").is(':hidden')){
-		$(".theform").slideDown(500);
-	}else{
-		$(".theform").slideUp(500);
-	}
-});
-});
-
-
-
-	// $(function() {                       //run when the DOM is ready
-	//   $(".video-copy.mobile").click(function() {  //use a class, since your ID gets mangled
-	//     $(this).addClass("active");      //add the class to the clicked element
-	// 		setTimeout(RemoveClass, 2000);
-	//   });
-	// 	function RemoveClass() {
-	// 	$('.video-copy.mobile').removeClass("active");
-	// 	}
-	// });
-
- $(".navmenu .nav li").addClass("animated slideInRight");
-
- $(".navbar-toggle").click(function() {
-     $(this).toggleClass("crossed");
-   });
-
-	 $("#ghost").click(function() {
-			 $('.navbar-toggle').removeClass("crossed");
-		 });
-
-// $('.item').matchHeight();
-
-
-
-	$('#app').carousel({
-		interval: 3000
+	$(function(){
+		$(".keys").on("click", function(e){
+			e.preventDefault();
+			$(this).toggleClass("rot");
+			if($(".moblink").is(':hidden')){
+				$(".moblink").slideDown(500);
+			}else{
+				$(".moblink").slideUp(500);
+			}
+		});
 	});
 
-	$('#app .item:first').addClass('active');
-	// $('#kb-fw .item:first').addClass('active');
-	$( "div[id^='kb-fw']").find('.item:first' ).addClass('active');
-	//
-	// var itemCount = jQuery("#kb-fw_0 .carousel-inner .item").length;
-  // if(itemCount > 1){jQuery('#kb-fw_0 .carousel-control').show();}
-  // else{jQuery('#kb-fw_0 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_1 .carousel-inner .item").length;
-  // if(itemCount > 1){jQuery('#kb-fw_1 .carousel-control').show();}
-  // else{jQuery('#kb-fw_1 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_2 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_2 .carousel-control').show();}
-	// else{jQuery('#kb-fw_2 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_3 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_3 .carousel-control').show();}
-	// else{jQuery('#kb-fw_3 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_4 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_4 .carousel-control').show();}
-	// else{jQuery('#kb-fw_4 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_5 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_5 .carousel-control').show();}
-	// else{jQuery('#kb-fw_5 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_6 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_6 .carousel-control').show();}
-	// else{jQuery('#kb-fw_6 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_7 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_7 .carousel-control').show();}
-	// else{jQuery('#kb-fw_7 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_8 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_8 .carousel-control').show();}
-	// else{jQuery('#kb-fw_8 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_9 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_9 .carousel-control').show();}
-	// else{jQuery('#kb-fw_9 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_10 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_10 .carousel-control').show();}
-	// else{jQuery('#kb-fw_10 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_11 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_11 .carousel-control').show();}
-	// else{jQuery('#kb-fw_11 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_12 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_12 .carousel-control').show();}
-	// else{jQuery('#kb-fw_12 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_13 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_13 .carousel-control').show();}
-	// else{jQuery('#kb-fw_13 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_14 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_14 .carousel-control').show();}
-	// else{jQuery('#kb-fw_14 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_15 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_15 .carousel-control').show();}
-	// else{jQuery('#kb-fw_15 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_16 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_16 .carousel-control').show();}
-	// else{jQuery('#kb-fw_16 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_17 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_17 .carousel-control').show();}
-	// else{jQuery('#kb-fw_17 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_18 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_18 .carousel-control').show();}
-	// else{jQuery('#kb-fw_18 .carousel-control').hide();}
-	//
-	// var itemCount = jQuery("#kb-fw_19 .carousel-inner .item").length;
-	// if(itemCount > 1){jQuery('#kb-fw_19 .carousel-control').show();}
-	// else{jQuery('#kb-fw_19 .carousel-control').hide();}
 
-	// Fixes the prev/next links of the sliders
-	//// MYSTERIOUSLY CAUSING CAROUSEL TO SKIP SLIDES
-	// $('.carousel-control.left').click(function() {
-	//   $('#kb').carousel('prev');
-	// });
-	//
-	// $('.carousel-control.right').click(function() {
-	//   $('#kb').carousel('next');
-	// });
-	//
-
-
-
-
-
-$(window).resize(function(){
-
-	$('.className').css({
-		position:'absolute',
-		left: ($(window).width() - $('.className').outerWidth())/2,
-		top: ($(window).height() - $('.className').outerHeight())/2
-	});
-
-});
-// To initially run the function:
-$(window).resize();
-
-
-
-  /*
-   * Let's fire off the gravatar function
-   * You can remove this if you don't need it
-  */
-  loadGravatars();
-
+$('.match').matchHeight();
 
 }); /* end of as page load scripts */
 
-$( window ).load(function() {
+$( window ).on("load", function() {
 
-		// ----------------------------------
-				// sticky footer
-		//-----------------------------------
+	var quote_col = $('.title_column').height();
+	var measured = $('.measured').height();
+	var float_quote = $('.float_quote').height();
+	var quote_marg = (((quote_col - measured)/2)-(float_quote/2));
+	$('.float_quote').css('margin-top',Math.abs(quote_marg)+"px");
 
-	// find height of footer and apply CSS for sticky footer
-	var boot= $('.footer').outerHeight();
-	var four= $(window).height();
-	// var smallboot= boot-10;
-	$(".wrapper").css('padding-bottom', boot);
-	$(".footer").css('margin-top', -boot);
-	// $(".fourohfour").css('padding-top', '140px');
-	// $(".fourohfour").css('height', (four-boot)-140);
 });

@@ -1,4 +1,4 @@
-<?
+<?php
 // remove comments from media attachments
 function filter_media_comment_status( $open, $post_id ) {
 $post = get_post( $post_id );

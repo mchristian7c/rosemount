@@ -1,0 +1,195 @@
+@-webkit-keyframes yofirst {
+  0%   {right: -28px}
+  100% {right: -36px}
+}
+
+@keyframes yofirst {
+  0%   {right: -28px}
+  100% {right: -36px}
+}
+
+@-webkit-keyframes myfirst {
+  0%   {right: 3px}
+  100% {right: -5px}
+}
+
+@keyframes myfirst {
+    0%   {right: 3px}
+    100% {right: -5px}
+}
+
+.hero {
+  background-image: url('../images/rosemount_watermark.png');
+  background-size: auto 100%;
+  background-position: top right;
+  background-repeat: no-repeat;
+  .row {
+    height: 53.56vw;
+  }
+  h1 {
+    font-weight: $reg;
+    color: grey(1);
+    font-size: 54px;
+    line-height: 54px;
+    span {
+      color: blue(1);
+    }
+  }
+  p {
+    font-size: 18px;
+    color: grey(1);
+    line-height: 30px;
+    margin: 25px 0 35px 0;
+  }
+  .badger {
+    text-align: right;
+    img {
+      width: 425px;
+      height: auto;
+    }
+  }
+}
+
+.linkwrap {
+  a {
+    text-transform: uppercase;
+    &:link {
+      color: blue(1);
+      position: relative;
+      padding-right: 25px;
+      i {
+        margin: 0 0 0 5px;
+        position: absolute;
+        // line-height: 18px;
+        right: 3px;
+        // color: green(1);
+        top: 2px;
+        // font-size: 20px;
+      }
+    }
+    &:visited {
+      color: blue(1);
+    }
+    &:hover {
+      color: blue(1);
+      i {
+          -webkit-animation: myfirst .3s infinite; /* Chrome, Safari, Opera */
+          -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
+          animation: myfirst .3s infinite;
+          animation-direction: alternate;
+        }
+    }
+    &:focus {
+      color: blue(1);
+    }
+  }
+  &.left {
+    text-align: right;
+    padding: 0 0 15px 0;
+    a {
+      &:link {
+        padding-left: 25px;
+        padding-right: 0;
+        i {
+          margin: 0 0 0 5px;
+          position: absolute;
+          // line-height: 18px;
+          right: auto;
+          left: -3px;
+          // color: green(1);
+          top: 2px;
+          // font-size: 20px;
+        }
+      }
+      &:visited {
+        color: blue(1);
+      }
+      &:hover {
+        color: blue(1);
+        i {
+            -webkit-animation: myleft.3s infinite; /* Chrome, Safari, Opera */
+            -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
+            animation: myleft .3s infinite;
+            animation-direction: alternate;
+          }
+      }
+      &:focus {
+        color: blue(1);
+      }
+    }
+  }
+}
+
+.singlepost {
+  .linkwrap {
+    margin-bottom: 50px;
+    padding:0 0 5px 0;
+  }
+}
+
+@-webkit-keyframes myfirst {
+  0%   {right: 3px}
+  100% {right: -5px}
+}
+
+@keyframes myfirst {
+    0%   {right: 3px}
+    100% {right: -5px}
+}
+@-webkit-keyframes myleft {
+  0%   {left: -3px}
+  100% {left: -8px}
+}
+
+@keyframes myleft {
+    0%   {left: -3px}
+    100% {left: -8px}
+}
+
+@media only screen and (min-width: 1025px) {
+
+
+
+} // end of media query
+
+@media only screen and (max-width: 1024px) {
+
+  .hero {
+    .badger {
+      text-align: center;
+      img {
+        width: 350px;
+      }
+    }
+  }
+  .hero {
+    .row {
+      height: 100vh;
+    }
+    h1 {
+      font-size: 45px;
+      line-height: 45px;
+    }
+    p {
+      margin: 20px 0;
+    }
+  }
+
+
+} // end of media query
+
+@media only screen and (max-width: 768px) {
+
+.singlepost {
+  .linkwrap {
+    margin-bottom: 25px;
+  }
+}
+
+} // end of media query
+
+@media only screen and (max-width: 480px) {
+
+
+
+} // end of media query

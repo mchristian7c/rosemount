@@ -1,0 +1,45 @@
+// normalize: http://necolas.github.io/normalize.css/
+@import "partials/normalize";
+@import "partials/variables";
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "partials/typography";
+@import "partials/functions";
+
+
+
+@import "partials/mixins";
+@import "partials/nav";
+@import "partials/plott";
+@import "partials/footer";
+@import "partials/contact";
+@import "partials/home-hero";
+@import "partials/home-leftright";
+@import "partials/carousel";
+@import "partials/hero";
+@import "partials/text-row";
+@import "partials/team";
+@import "partials/blog-archive";
+@import "partials/accordion";
+@import "partials/single";
+@import "partials/four";
+
+@import "partials/case-study";
+@import "partials/resources";
+
+
+
+
+
+
+
+
+
+
+
+
+@media print {
+
+	// styles in print.scss
+	@import "partials/print";
+
+}

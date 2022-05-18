@@ -47,5 +47,3 @@ function isa_remove_menus() {
 // remove_menu_page( 'wp_broadbean_home' );    //wpbb
 // remove_menu_page( 'gf_edit_forms', 'gf_edit_forms' );    //gravity forms
 // remove_menu_page( 'edit.php?post_type=acf-field-group' );    //custom fields
-
- ?>

@@ -1,76 +1,53 @@
-<div class="container_fluid accordion-wrapper">
+<div class="container_fluid accordion-wrapper bg-<?php the_sub_field('row_colour'); ?>">
   <div class="container">
+    <h3>Frequently asked questions</h3>
 
+  <?php
 
-      <? if( have_rows('concertina_content') ): ?>
-      <? $single = 0; ?>
-        <?while( have_rows('concertina_content') ): the_row(); ?>
+    $post_objects = get_sub_field('faq_post');
 
+    if( $post_objects ): ?>
+      <div class="accordion-column">
+        <?php $i = 0; ?>
+        <?php foreach( $post_objects as $post): // variable must be called $post (IMPORTANT) ?>
+        <?php $i++; ?>
+            <?php setup_postdata($post); ?>
 
-              <?php if(get_row_layout() == "concertina_text"): ?>
-                <div class="concertina-column">
+           <div class="panel panel-default">
+             <div class="panel-heading">
 
-                    <div class="<?php if( get_sub_field('only_one_column') ): ?>onlyone col-sm-10 col-sm-offset-1<?php else: ?>col-sm-6<?php endif; ?>">
-                      <?php if(have_rows('single')): ?>
-                          <?while(have_rows('single')): $single++; the_row(); ?>
+               <h4 class="panel-title">
+                 <a
+                    data-toggle="collapse"
+                    data-parent="#accordion"
+                    href="#collapse-<?php echo $i; ?>"
+                    aria-expanded="false"
+                    class="keys"
+                  >
+                      <?php the_title(); ?>
+                   <p>
+                     <!-- <span class="plusbar"></span>
+                     <span class="plusbar upright"></span> -->
+                     <i class="fa fa-long-arrow-down" aria-hidden="true"></i>
+                   </p>
+                 </a>
+               </h4>
+             </div>
 
-                               <div class="panel panel-default">
-                                 <div class="panel-heading">
-                                   
-                                   <h4 class="panel-title">
-                                     <a
-                                        data-toggle="collapse"
-                                        data-parent="#accordion"
-                                        href="#collapse-<?php echo $single; ?>"
-                                        aria-expanded="false"
-                                        class="keys"
-                                      >
-                                          <?php the_sub_field('title'); ?>
-                                       <p>
-                                         <span class="plusbar"></span>
-                                         <span class="plusbar upright"></span>
-                                       </p>
-                                     </a>
-                                   </h4>
-
-                                   <h4 class="panel-title mobile">
-                                     <a
-                                        data-toggle="collapse"
-                                        data-parent="#accordion"
-                                        href="#collapse-<?php echo $single; ?>"
-                                        aria-expanded="false"
-                                        class="keys"
-                                      >
-                                        <?php the_sub_field('mobile_title'); ?>
-                                       <p>
-                                         <span class="plusbar"></span>
-                                         <span class="plusbar upright"></span>
-                                       </p>
-                                     </a>
-                                   </h4>
-                                 </div>
-
-                                 <div id="collapse-<?php echo $single; ?>" class="panel-collapse collapse">
-                                     <div class="panel-body">
-                                       <?php the_sub_field('hidden_text'); ?>
-                                   </div>
-                                 </div>
-                               </div>
-
-                          <?php endwhile; ?>
-                      <? endif; ?>
-                    </div>
-
+             <div id="collapse-<?php echo $i; ?>" class="panel-collapse collapse">
+                 <div class="panel-body">
+                   <?php the_content(); ?>
                </div>
+             </div>
 
+           </div>
 
-              <?php endif; // get_row_layout ?>
+         <?php endforeach; ?>
+      </div>
+      <?php wp_reset_postdata(); // IMPORTANT - reset the $post object so the rest of the page works correctly ?>
+  <?php endif;
 
-        <?php endwhile; // flex ?>
-      <? //$county++; ?>
-      <?php endif; // flex ?>
-
+  ?>
 
   </div>
-
 </div>

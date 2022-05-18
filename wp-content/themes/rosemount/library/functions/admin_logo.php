@@ -1,4 +1,4 @@
-<?
+<?php
 // admin logo
 function wpb_custom_logo() {
 echo '

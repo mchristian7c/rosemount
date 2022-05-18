@@ -1,30 +1,31 @@
 // normalize: http://necolas.github.io/normalize.css/
 @import "partials/normalize";
+@import "partials/variables";
+@import "node_modules/bootstrap/scss/bootstrap";
 @import "partials/typography";
 @import "partials/functions";
+
+
 
 @import "partials/mixins";
 @import "partials/nav";
 @import "partials/plott";
-@import "partials/kenburns";
-@import "partials/video";
-@import "partials/full-screen-image";
-@import "partials/blog";
 @import "partials/footer";
-@import "partials/single";
 @import "partials/contact";
-@import "partials/instagram";
-@import "partials/tabs";
-@import "partials/accordian";
-@import "partials/in-tab-nav";
-@import "partials/title";
-// @import "partials/modal-video";
-// @import "partials/mob-nav";
-// @import "partials/owl-clients";
+@import "partials/home-hero";
+@import "partials/home-leftright";
+@import "partials/carousel";
+@import "partials/hero";
+@import "partials/text-row";
+@import "partials/team";
+@import "partials/blog-archive";
+@import "partials/accordion";
+@import "partials/single";
+@import "partials/four";
 
-
-
-
+@import "partials/case-study";
+@import "partials/resources";
+@import "partials/loading";
 
 
 

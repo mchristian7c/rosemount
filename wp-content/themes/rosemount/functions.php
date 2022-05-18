@@ -8,10 +8,16 @@ just edit things like thumbnail sizes, header images,
 sidebars, comments, etc.
 */
 
-
-require_once ABSPATH . 'wp-admin/includes/template.php';
 // LOAD BONES CORE (if you remove this, the theme will break)
 require_once( 'library/bones.php' );
+
+/* Theme version number - gets this from style.css and appends to stylesheet using THEME_VERSION as version number, eg.
+wp_register_style( 'bones-stylesheet', get_stylesheet_directory_uri() . '/library/scss/style.css', array(), 'THEME_VERSION', 'all' ); */
+$theme = wp_get_theme();
+define('THEME_VERSION', $theme->Version); //gets version written in your style.css
+/* ALWAYS INCLUDE ABOVE */
+
+require_once ABSPATH . 'wp-admin/includes/template.php';
 
 // CUSTOMIZE THE WORDPRESS ADMIN (off by default)
 // require_once( 'library/admin.php' );
@@ -28,9 +34,6 @@ function bones_ahoy() {
 
   // let's get language support going, if you need it
   load_theme_textdomain( 'bonestheme', get_template_directory() . '/library/translation' );
-
-  // USE THIS TEMPLATE TO CREATE CUSTOM POST TYPES EASILY
-  // require_once( 'library/custom-post-type.php' );
 
   // launching operation cleanup
   add_action( 'init', 'bones_head_cleanup' );
@@ -70,55 +73,25 @@ add_action( 'after_setup_theme', 'bones_ahoy' );
 // Plott Creative functions
 require_once( 'library/functions/options.php' );
 require_once( 'library/functions/admin_logo.php' );
-require_once( 'library/functions/enqueues.php' );
+require_once('library/functions/enqueues.php');
 require_once( 'library/functions/login_logo.php' );
-require_once( 'library/functions/body_class.php' );
+require_once( 'library/functions/admin-items.php' );
 require_once( 'library/functions/cpt_thumbs.php' );
-require_once( 'library/functions/improve_excerpt.php' );
 require_once( 'library/functions/remove_media_comments.php' );
-require_once( 'library/functions/ajax_spinner.php' );
-require_once( 'library/functions/slug_class.php' );
-require_once( 'library/functions/blog_cat.php' );
-// require_once( 'library/functions/minify-html.php' );
-// require_once( 'library/functions/register-taxonomy.php' );
 require_once( 'library/functions/dash.php' );
-require_once( 'library/functions/dupe.php' );
-require_once( 'library/functions/childpages.php' );
 require_once( 'library/functions/gravity.php' );
-require_once( 'library/functions/tinymce.php' );
 require_once( 'library/functions/wp-admin-menu.php' );
 require_once( 'library/functions/og_meta.php' );
 require_once('library/wp_bootstrap_navwalker.php'); // Register custom navigation walker
+require_once('library/functions/tax_current_cat.php'); // Register custom navigation walker
+//require_once('library/functions/bullet-tax.php'); // Register custom navigation walker
 // Register custom post types
+require_once( 'library/cpt/faqs.php' );
 require_once( 'library/cpt/casestudy.php' );
-require_once( 'library/functions/shortcodes.php' );
+require_once( 'library/cpt/team.php' );
+require_once( 'library/cpt/resource.php' );
 
-function wpb_move_comment_field_to_bottom( $fields ) {
-$comment_field = $fields['comment'];
-unset( $fields['comment'] );
-$fields['comment'] = $comment_field;
-return $fields;
-}
 
-add_filter( 'comment_form_fields', 'wpb_move_comment_field_to_bottom' );
-
-add_filter( 'comment_form_defaults', function( $defaults )
-{
-    // Edit this to your needs:
-    $button = '<input name="%1$s" type="submit" id="%2$s" class="%3$s button" value="submit comment" />';
-
-    // Override the default submit button:
-    $defaults['submit_button'] = $button;
-
-    return $defaults;
-} );
-
-function when_rewrite_rules( $wp_rewrite ) {
-  $newrules = array();
-  $new_rules['type/([^/]+)/category/([^/]+)/?$'] = 'index.php?post_format=$matches[1]&category_name=$matches[2]';
-  $wp_rewrite->rules = $new_rules + $wp_rewrite->rules;
-}
-add_filter('generate_rewrite_rules','when_rewrite_rules');
 /************* OEMBED SIZE OPTIONS *************/
 
 if ( ! isset( $content_width ) ) {
@@ -128,13 +101,8 @@ if ( ! isset( $content_width ) ) {
 /************* THUMBNAIL SIZE OPTIONS *************/
 
 // Thumbnail sizes
-// add_image_size( 'bones-thumb-600', 600, 150, true );
-// add_image_size( 'bones-thumb-300', 300, 100, true );
-add_image_size( 'total', 400, 400, true );
-add_image_size( 'single', 1140, 630, true );
-add_image_size( 'thumb', 915, 505, true );
-add_image_size( 'video', 599, 432, true );
-
+add_image_size( 'bones-thumb-600', 600, 150, true );
+add_image_size( 'bones-thumb-300', 300, 100, true );
 
 /*
 to add more sizes, simply copy a line from above
@@ -253,14 +221,6 @@ function bones_register_sidebars() {
 
 /************* COMMENT LAYOUT *********************/
 
-// get "posted X days ago"
-function time_ago( $type = 'post' ) {
-    $d = 'comment' == $type ? 'get_comment_time' : 'get_comment_date';
-
-    return human_time_diff($d('U'), current_time('timestamp')) . " " . __('ago');
-
-}
-
 // Comment Layout
 function bones_comments( $comment, $args, $depth ) {
    $GLOBALS['comment'] = $comment; ?>
@@ -278,20 +238,14 @@ function bones_comments( $comment, $args, $depth ) {
           // create variable
           $bgauthemail = get_comment_author_email();
         ?>
-        <!-- <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" /> -->
+        <img data-gravatar="http://www.gravatar.com/avatar/<?php echo md5( $bgauthemail ); ?>?s=40" class="load-gravatar avatar avatar-48 photo" height="40" width="40" src="<?php echo get_template_directory_uri(); ?>/library/images/nothing.gif" />
         <?php // end custom gravatar call ?>
         <?php printf(__( '<cite class="fn">%1$s</cite> %2$s', 'bonestheme' ), get_comment_author_link(), edit_comment_link(__( '(Edit)', 'bonestheme' ),'  ','') ) ?>
-        <time datetime="
-        <?php //echo comment_time('Y-m-j'); ?>">
-        <!-- <a href="<?php //echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"> -->
-          <?php //comment_time(__( 'F jS, Y', 'bonestheme' )); ?>
-           (<?php echo time_ago(); ?>)
-         <!-- </a> -->
-       </time>
+        <time datetime="<?php echo comment_time('Y-m-j'); ?>"><a href="<?php echo htmlspecialchars( get_comment_link( $comment->comment_ID ) ) ?>"><?php comment_time(__( 'F jS, Y', 'bonestheme' )); ?> </a></time>
 
       </header>
       <?php if ($comment->comment_approved == '0') : ?>
-        <div class="awating-moderation">
+        <div class="alert alert-info">
           <p><?php _e( 'Your comment is awaiting moderation.', 'bonestheme' ) ?></p>
         </div>
       <?php endif; ?>
@@ -312,15 +266,10 @@ external fonts. If you're using Google Fonts, you
 can replace these fonts, change it in your scss files
 and be up and running in seconds.
 */
-// function robo_font() {
-//   wp_enqueue_style('robot', '//fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
-//   wp_enqueue_style('opens', '//fonts.googleapis.com/css?family=Open+Sans:300,400,600');
-//
-// }
-//
-// add_action('wp_enqueue_scripts', 'robo_font');
+function bones_fonts() {
+  wp_enqueue_style('googleFonts', '//fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic');
+}
 
-
-
+add_action('wp_enqueue_scripts', 'bones_fonts');
 
 /* DON'T DELETE THIS CLOSING TAG */ ?>

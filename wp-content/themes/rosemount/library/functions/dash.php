@@ -1,19 +1,33 @@
-<?
-// example custom dashboard widget
+<?php
+/**
+ * Dashboard Theme
+ *
+ * @author Ashley Armstrong <ashley@plottcreative.co.uk>
+ * @since  1.0
+ */
+
+
+
 function custom_dashboard_widget() {
-  echo "<div style='text-align:center;'>";
-  	echo "<img style='display:inline-block;vertical-align:middle;' src='https://www.plottcreative.co.uk/wp-content/themes/plott-creative/images/ap_logo.png' height='100px' width='177px'>";
-  	// echo "<img style='display:inline-block;vertical-align:middle;' src='https://www.internationalmovingexpert.co.uk/wp-content/themes/ime/images/logo.svg' height='100px' width='177px'>";
-  	//echo "<img style='display:inline-block;vertical-align:middle;' src='http://localhost/whitelabel/wp-content/themes/whitelabel/library/images/logo.png' height='100px' width='100px'>";
-    //echo "<h1 style='display:inline-block;vertical-align:middle;margin:0 0 0 20px;font-family:Rosario;font-size: 30px;'>Whitelabel Website</h1>";
-    echo "<h1 style='font-family:Rosario;font-size: 30px;margin:30px 0 20px 0;padding:0;'>PLOTT</h1>";
-    echo "<h2 style='font-size: 14px;margin:0 0 10px 0;padding:0;'>by PLOTT Creative</h2>";
-    echo "<p style='font-size: 12px;margin:0;'>Courtyard 3, Coleshill Manor, Coleshill, B46 1DL</p>";
-    echo "<p style='font-size: 12px;margin:0;'>01675 434583</p>";
+  echo "<div class='dashwrap' style='text-align:center;background-color:#000000;margin-top:-11px;width:calc(100% + 24px);margin-left:-12px;padding-bottom:12px;margin-bottom:-12px;'>";
+  echo "<p style='color:white;font-size:18px;font-weight:bold;text-align:center;padding:48px 0 18px 0;margin:0;'>Designed and built by</p>";
+  	echo "<img style='display:inline-block;vertical-align:middle;' src='https://www.plott.co.uk/wp-content/themes/plott/plott-dash.svg' height='78px' width='177px'>";
+    echo "<p style='color:white;font-size:18px;font-weight:bold;text-align:center;padding:34px 0 22px 0;margin:0;'>We don't just do websites</p>";
+    echo "<p style='text-transform:uppercase;color:white;font-size:15px;letter-spacing:1.5px;font-weight:normal;text-align:center;margin:0'>
+    branding<span style='margin:0 8px;color:#3CDBDB;'>&#8226;</span>
+    marketing<span style='margin:0 8px;color:#3CDBDB;'>&#8226;</span>
+    digital<br>
+    animation<span style='margin:0 8px;color:#3CDBDB;'>&#8226;</span>
+    social<span style='margin:0 8px;color:#3CDBDB;'>&#8226;</span>
+    photography<br>
+    video<span style='margin:0 8px;color:#3CDBDB;'>&#8226;</span>
+    exhibition<span style='margin:0 8px;color:#3CDBDB;'>&#8226;</span>
+    web</p>";
+    echo "<p style='font-size: 18px;margin:0;color:#3CDBDB;padding:20px 0 48px 0;'><a style='color:#3CDBDB' href='http://www.plott.co.uk/' target='_blank'>www.plott.co.uk</a></p>";
   echo "</div>";
 }
 function add_custom_dashboard_widget() {
-	wp_add_dashboard_widget('custom_dashboard_widget', 'Plott Creative', 'custom_dashboard_widget');
+	wp_add_dashboard_widget('custom_dashboard_widget', 'PLOTT', 'custom_dashboard_widget');
 }
 add_action('wp_dashboard_setup', 'add_custom_dashboard_widget');
 
@@ -28,6 +42,7 @@ function remove_dashboard_meta() {
         remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );
         remove_meta_box( 'dashboard_activity', 'dashboard', 'normal');//since 3.8
         remove_meta_box( 'rg_forms_dashboard', 'dashboard', 'normal');//since 3.8
+        remove_meta_box( 'wpseo-dashboard-overview', 'dashboard', 'normal');//since 3.8
 
 }
 add_action( 'admin_init', 'remove_dashboard_meta' );
@@ -36,15 +51,15 @@ add_action('wp_dashboard_setup', 'organicweb_dashboard_widgets');
 
 function organicweb_dashboard_widgets() {
 // CHANGE 'OrganicWeb News' BELOW TO THE TITLE OF YOUR WIDGET
-wp_add_dashboard_widget( 'dashboard_custom_feed', 'Plott Creative Blog', 'organicweb_custom_feed_output' );
+wp_add_dashboard_widget( 'dashboard_custom_feed', 'PLOTT News', 'organicweb_custom_feed_output' );
 
 function organicweb_custom_feed_output() {
 echo '<div class="rss-widget">';
 wp_widget_rss_output(array(
 // CHANGE THE URL BELOW TO THAT OF YOUR FEED
-'url' => 'https://www.plottcreative.co.uk/feed/',
+'url' => 'https://www.plott.co.uk/feed/',
 // CHANGE 'OrganicWeb News' BELOW TO THE NAME OF YOUR WIDGET
-'title' => 'Plott Creative',
+'title' => 'PLOTT',
 // CHANGE '2' TO THE NUMBER OF FEED ITEMS YOU WANT SHOWING
 'items' => 4,
 // CHANGE TO '0' IF YOU ONLY WANT THE TITLE TO SHOW

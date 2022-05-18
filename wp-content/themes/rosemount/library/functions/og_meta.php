@@ -1,7 +1,12 @@
 <?php function fb_opengraph() {
     global $post;
 
-        if(has_post_thumbnail($post->ID)) {
+    if(is_404()){
+      // nuffink
+    }elseif(is_category()){
+      // nuffink
+    }else {
+        if(has_post_thumbnail($post->ID))  {
             $img_src = wp_get_attachment_image_url(get_post_thumbnail_id( $post->ID ), 'full');
         } else {
             // $img_src = get_stylesheet_directory_uri() . '/img/opengraph_image.jpg';
@@ -12,6 +17,7 @@
         } else {
             $excerpt = get_bloginfo('description');
         }
+      }
         ?>
 
     <meta property="og:title" content="<?php echo the_title(); ?>"/>

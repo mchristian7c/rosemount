@@ -1,4 +1,4 @@
-<?
+<?php
 add_filter( 'login_headerurl', 'custom_loginlogo_url' );
 function custom_loginlogo_url($url) {
  return 'http://www.plottcreative.co.uk';
@@ -7,12 +7,12 @@ function custom_loginlogo_url($url) {
 function my_login_logo() { ?>
     <style type="text/css">
         body.login div#login h1 a {
-          background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/library/images/login-logo.png);
+          background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/library/images/rose.png);
           padding-bottom: 15px;
-          height: 150px;
+          height: 100px;
           width: auto;
           background-size: auto 100%;;
-          margin: 0;
+          margin: 0 0 40px 0;
         }
 
         .login form {
