@@ -1,48 +1,72 @@
 @-webkit-keyframes yofirst {
-  0%   {right: -28px}
-  100% {right: -36px}
+  0% {
+    right: -28px
+  }
+  100% {
+    right: -36px
+  }
 }
 
 @keyframes yofirst {
-  0%   {right: -28px}
-  100% {right: -36px}
+  0% {
+    right: -28px
+  }
+  100% {
+    right: -36px
+  }
 }
 
 @-webkit-keyframes myfirst {
-  0%   {right: 3px}
-  100% {right: -5px}
+  0% {
+    right: 3px
+  }
+  100% {
+    right: -5px
+  }
 }
 
 @keyframes myfirst {
-    0%   {right: 3px}
-    100% {right: -5px}
+  0% {
+    right: 3px
+  }
+  100% {
+    right: -5px
+  }
 }
+
 
 .hero {
   background-image: url('../images/rosemount_watermark.png');
   background-size: auto 100%;
   background-position: top right;
   background-repeat: no-repeat;
+  overflow-x: hidden;
+
   .row {
     height: 53.56vw;
   }
+
   h1 {
     font-weight: $reg;
     color: grey(1);
     font-size: 54px;
     line-height: 54px;
+
     span {
       color: blue(1);
     }
   }
+
   p {
     font-size: 18px;
     color: grey(1);
     line-height: 30px;
     margin: 25px 0 35px 0;
   }
+
   .badger {
     text-align: right;
+
     img {
       width: 425px;
       height: auto;
@@ -53,10 +77,12 @@
 .linkwrap {
   a {
     text-transform: uppercase;
+
     &:link {
       color: blue(1);
       position: relative;
       padding-right: 25px;
+
       i {
         margin: 0 0 0 5px;
         position: absolute;
@@ -67,29 +93,36 @@
         // font-size: 20px;
       }
     }
+
     &:visited {
       color: blue(1);
     }
+
     &:hover {
       color: blue(1);
+
       i {
-          -webkit-animation: myfirst .3s infinite; /* Chrome, Safari, Opera */
-          -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
-          animation: myfirst .3s infinite;
-          animation-direction: alternate;
-        }
+        -webkit-animation: myfirst .3s infinite; /* Chrome, Safari, Opera */
+        -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
+        animation: myfirst .3s infinite;
+        animation-direction: alternate;
+      }
     }
+
     &:focus {
       color: blue(1);
     }
   }
+
   &.left {
     text-align: right;
     padding: 0 0 15px 0;
+
     a {
       &:link {
         padding-left: 25px;
         padding-right: 0;
+
         i {
           margin: 0 0 0 5px;
           position: absolute;
@@ -101,18 +134,22 @@
           // font-size: 20px;
         }
       }
+
       &:visited {
         color: blue(1);
       }
+
       &:hover {
         color: blue(1);
+
         i {
-            -webkit-animation: myleft.3s infinite; /* Chrome, Safari, Opera */
-            -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
-            animation: myleft .3s infinite;
-            animation-direction: alternate;
-          }
+          -webkit-animation: myleft .3s infinite; /* Chrome, Safari, Opera */
+          -webkit-animation-direction: alternate; /* Chrome, Safari, Opera */
+          animation: myleft .3s infinite;
+          animation-direction: alternate;
+        }
       }
+
       &:focus {
         color: blue(1);
       }
@@ -123,40 +160,59 @@
 .singlepost {
   .linkwrap {
     margin-bottom: 50px;
-    padding:0 0 5px 0;
+    padding: 0 0 5px 0;
   }
 }
 
 @-webkit-keyframes myfirst {
-  0%   {right: 3px}
-  100% {right: -5px}
+  0% {
+    right: 3px
+  }
+  100% {
+    right: -5px
+  }
 }
 
 @keyframes myfirst {
-    0%   {right: 3px}
-    100% {right: -5px}
+  0% {
+    right: 3px
+  }
+  100% {
+    right: -5px
+  }
 }
+
 @-webkit-keyframes myleft {
-  0%   {left: -3px}
-  100% {left: -8px}
+  0% {
+    left: -3px
+  }
+  100% {
+    left: -8px
+  }
 }
 
 @keyframes myleft {
-    0%   {left: -3px}
-    100% {left: -8px}
+  0% {
+    left: -3px
+  }
+  100% {
+    left: -8px
+  }
 }
 
 @media only screen and (min-width: 1025px) {
 
 
+}
 
-} // end of media query
+// end of media query
 
 @media only screen and (max-width: 1024px) {
 
   .hero {
     .badger {
       text-align: center;
+
       img {
         width: 350px;
       }
@@ -166,30 +222,121 @@
     .row {
       height: 100vh;
     }
+
     h1 {
       font-size: 45px;
       line-height: 45px;
     }
+
     p {
       margin: 20px 0;
     }
   }
 
 
-} // end of media query
+}
+
+// end of media query
 
 @media only screen and (max-width: 768px) {
 
-.singlepost {
-  .linkwrap {
-    margin-bottom: 25px;
+  .singlepost {
+    .linkwrap {
+      margin-bottom: 25px;
+    }
   }
+
 }
 
-} // end of media query
+// end of media query
 
 @media only screen and (max-width: 480px) {
 
 
+}
 
-} // end of media query
+// end of media query
+
+
+#slider-container {
+  position: relative;
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  border: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: -85px;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+
+  width: 100%;
+  height: 100%;
+  max-width: 90%;
+}
+
+.showMe {
+  opacity: 1;
+}
+
+.hero-slider {
+  position: absolute;
+  height: 53.56vw;
+  width: 50%;
+  right: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 1200px) {
+  .hero-slider {
+    position: absolute;
+    height: 50%;
+    width: 45%;
+    right: 0;
+    margin-top: 50px;
+    overflow-x: hidden;
+  }
+  .slide {
+    right: -20px;
+  }
+  .hero-text{
+    margin-top: 30px;
+    h1{
+      font-size: 44px;
+      line-height: 44px;
+    }
+  }
+}
+
+@media only screen and (max-width: 992px){
+  .hero-slider{
+    position: relative;
+    height: 35%;
+    width: 100%;
+  }
+
+  .hero > .container > .row{
+    align-content: center;
+  }
+  .slide{
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .hero-text{
+    h1{
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+}

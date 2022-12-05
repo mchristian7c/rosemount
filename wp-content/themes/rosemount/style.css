@@ -10,3 +10,10 @@ Tags: responsive-layout
 .sticky {}          /* DO NOT EDIT THIS */
 .gallery-caption {} /* THESE ARE USELESS */
 .bypostauthor {}    /* THEY ARE ONLY TO KEEP THEME CHECK HAPPY */
+
+@media only screen and (min-width:1200px){
+	.widget_categories{
+		position: sticky;
+		top: 60px;
+	}
+}

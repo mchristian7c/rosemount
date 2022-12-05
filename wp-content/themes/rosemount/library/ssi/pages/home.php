@@ -2,19 +2,26 @@
     <div class="container">
         <div class="row align-items-center">
 
-            <div class="col-sm-12 col-md-6 hero-text">
+            <div class="hero-slider col-12">
+                <div id="slider-container">
+                    <img id="slideimg0" class="slide showMe"
+                         src="<?php echo get_template_directory_uri(); ?>/library/images/home-hero/running.svg">
+                    <img id="slideimg1" class="slide"
+                         src="<?php echo get_template_directory_uri(); ?>/library/images/home-hero/family.svg">
+                    <img id="slideimg2" class="slide"
+                         src="<?php echo get_template_directory_uri(); ?>/library/images/home-hero/golf.svg">
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-lg-6 hero-text">
                 <h1>Wealth done wisely</h1>
-                <h1><span>for 30 years</span></h1>
+                <h1><span>for over 30 years</span></h1>
                 <p>Our core purpose is to educate, inspire and empower our clients to live their ideal lifestyle by
                     helping them reach financial independence.</p>
                 <div class="linkwrap">
                     <a href="<?php bloginfo('url'); ?>/rosemount/about-us">learn more<i class="fa fa-long-arrow-right"
                                                                                         aria-hidden="true"></i></a>
                 </div>
-            </div>
-
-            <div class="d-none d-sm-none d-md-block d-lg-block d-xl-block col-md-6 badger">
-                <img src="<?php echo get_template_directory_uri(); ?>/library/images/thirtybadge.png" alt="">
             </div>
 
         </div>

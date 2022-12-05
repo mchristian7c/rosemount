@@ -7665,7 +7665,7 @@ probably best not to use it. I mean, were you going to anyway? */
   .header .navbar-logo img {
     height: 47px;
     width: auto;
-    margin: 46px 0 0 -61px;
+    margin: 46px 0 0 0;
     -webkit-transition: all 0.4s ease-in;
     -ms-transition: all 0.4s ease-in;
     -moz-transition: all 0.4s ease-in;
@@ -7716,6 +7716,9 @@ button.navburger {
   -ms-transition: all 0.2s ease-in;
   -moz-transition: all 0.2s ease-in;
   transition: all 0.2s ease-in; }
+  @media only screen and (min-width: 991.99px) and (max-width: 992.01px) {
+    button.navburger {
+      right: 0px; } }
   button.navburger:hover {
     background-color: #64c0e5;
     -webkit-transition: all 0.2s ease-in;
@@ -8176,6 +8179,7 @@ p.blob a {
   transition: all 0.2s ease-in; }
 
 body {
+  overflow-x: hidden;
   position: relative; }
   body.fix-me {
     overflow: hidden; }
@@ -8898,7 +8902,8 @@ a:focus {
   background-image: url("../images/rosemount_watermark.png");
   background-size: auto 100%;
   background-position: top right;
-  background-repeat: no-repeat; }
+  background-repeat: no-repeat;
+  overflow-x: hidden; }
   .hero .row {
     height: 53.56vw; }
   .hero h1 {
@@ -8961,7 +8966,7 @@ a:focus {
   .linkwrap.left a:hover {
     color: #6dcef5; }
     .linkwrap.left a:hover i {
-      -webkit-animation: myleft 0.3s infinite;
+      -webkit-animation: myleft .3s infinite;
       /* Chrome, Safari, Opera */
       -webkit-animation-direction: alternate;
       /* Chrome, Safari, Opera */
@@ -9014,6 +9019,70 @@ a:focus {
 @media only screen and (max-width: 768px) {
   .singlepost .linkwrap {
     margin-bottom: 25px; } }
+
+#slider-container {
+  position: relative;
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; }
+
+.slide {
+  border: none;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  right: -85px;
+  -webkit-transition: opacity 0.5s linear;
+  -moz-transition: opacity 0.5s linear;
+  -o-transition: opacity 0.5s linear;
+  transition: opacity 0.5s linear;
+  width: 100%;
+  height: 100%;
+  max-width: 90%; }
+
+.showMe {
+  opacity: 1; }
+
+.hero-slider {
+  position: absolute;
+  height: 53.56vw;
+  width: 50%;
+  right: 0;
+  padding: 0; }
+
+@media screen and (max-width: 1200px) {
+  .hero-slider {
+    position: absolute;
+    height: 50%;
+    width: 45%;
+    right: 0;
+    margin-top: 50px;
+    overflow-x: hidden; }
+  .slide {
+    right: -20px; }
+  .hero-text {
+    margin-top: 30px; }
+    .hero-text h1 {
+      font-size: 44px;
+      line-height: 44px; } }
+
+@media only screen and (max-width: 992px) {
+  .hero-slider {
+    position: relative;
+    height: 35%;
+    width: 100%; }
+  .hero > .container > .row {
+    align-content: center; }
+  .slide {
+    left: 0;
+    right: 0;
+    margin: 0 auto; } }
+
+@media only screen and (max-width: 500px) {
+  .hero-text h1 {
+    font-size: 36px;
+    line-height: 36px; } }
 
 .left-right-row-wrap .row-wrap:nth-of-type(even) {
   margin-top: 10px; }

@@ -4,6 +4,7 @@
   @include transition(.2s);
 }
 body {
+  overflow-x: hidden;
   position: relative;
   &.fix-me {
     // position: fixed;

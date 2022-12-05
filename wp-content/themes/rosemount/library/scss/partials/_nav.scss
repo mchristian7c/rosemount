@@ -10,7 +10,7 @@
     img {
       height: 47px;
       width: auto;
-      margin: 46px 0 0 -61px;
+      margin: 46px 0 0 0;
       @include transition(.4s);
     }
   }
@@ -43,6 +43,9 @@
 button.navburger {
   position: absolute;
   right: -61px;
+  @media only screen and (min-width: 991.99px) and (max-width: 992.01px) {
+    right: 0px;
+  }
   width: 60px;
   height: 80px;
   background-color: blue(1);

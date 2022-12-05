@@ -40,6 +40,7 @@
 
 		<link href="https://fonts.googleapis.com/css?family=Zilla+Slab:300,400&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500&display=swap" rel="stylesheet">
+		<link href="<?php echo get_template_directory_uri(); ?>/style.css" rel="stylesheet">
 		<?php // wordpress head functions ?>
 		<?php wp_head(); ?>
 		<?php // end of wordpress head ?>
